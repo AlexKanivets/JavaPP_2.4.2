@@ -63,6 +63,12 @@ public class UserController {
         return "redirect:/";
     }
 
+    @GetMapping(value = "/{id}")
+    public String getUserById(@PathVariable int id, Model model) {
+        model.addAttribute("user", userService.getUserById(id));
+        return "user";
+    }
+
     @RequestMapping(value = "hello", method = RequestMethod.GET)
     public String printWelcome(ModelMap model) {
         List<String> messages = new ArrayList<>();
