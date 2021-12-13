@@ -1,11 +1,16 @@
 package web.dao;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
+import web.model.Role;
 import web.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Component
 public class UserDaoImpl implements UserDao {
@@ -15,15 +20,11 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public List<User> getAllUser() {
-        createUsersTable();
         return entityManager.createQuery("from User", User.class).getResultList();
     }
 
     @Override
     public User getUserById(int id) {
-//        return entityManager.createQuery("select u from User u where u.id = :id", User.class)
-//                .setParameter("id", id)
-//                .getSingleResult();
         return entityManager.find(User.class, id);
     }
 
@@ -34,12 +35,6 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void updateUser(int id, User updatedUser) {
-//        entityManager.createQuery("update User u set u.name = :name,u.lastname = :lastname, u.age = :age where u.id = :id")
-//                .setParameter("id", updatedUser.getId())
-//                .setParameter("name", updatedUser.getName())
-//                .setParameter("lastname", updatedUser.getLastname())
-//                .setParameter("age", updatedUser.getAge())
-//                .executeUpdate();
         User user = getUserById(id);
         user.setName(updatedUser.getName());
         user.setLastname(updatedUser.getLastname());
@@ -48,18 +43,11 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void deleteUser(int id) {
-//        entityManager.createQuery("delete from User u where u.id = :id")
-//                .setParameter("id", id)
-//                .executeUpdate();
         entityManager.remove(getUserById(id));
     }
 
     @Override
-    public void createUsersTable() {
-        entityManager.createNativeQuery("create table if not exists users " +
-                "(id int primary key AUTO_INCREMENT, " +
-                "name varchar(30), " +
-                "lastname varchar(50), " +
-                "age int)").executeUpdate();
+    public User getUserByName(String name) {
+        return entityManager.find(User.class, name);
     }
 }

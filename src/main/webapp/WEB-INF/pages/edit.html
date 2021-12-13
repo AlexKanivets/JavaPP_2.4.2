@@ -20,7 +20,15 @@
         <input type="text" th:field="*{age}" id="age"/>
         <div style="color: red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></div>
         <br/>
+        <label for="age">Введите пароль: </label>
+        <input type="text" th:field="*{password}" id="password"/>
+        <div style="color: red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+        <br/>
+        <input type="checkbox" name="nameRoles" value="ROLE_USER"/>USER
+        <input type="checkbox" name="nameRoles" value="ROLE_ADMIN"/>ADMIN
+        <br/>
         <input type="submit" value="Сохранить">
+        <a th:href="@{/logout}">Выйти</a>
     </form>
 </div>
 </body>

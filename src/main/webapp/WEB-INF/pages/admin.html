@@ -2,11 +2,11 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Пользователь</title>
+    <title>Список пользователей</title>
 </head>
 <body>
 <div align="center">
-    <h2>Пользователь</h2>
+    <h2>Список пользователей</h2>
     <table border="1" cellpadding="5">
         <tr>
             <th>Id</th>
@@ -14,24 +14,25 @@
             <th>Фамилия</th>
             <th>Возраст</th>
             <th>Действие</th>
-            <th>Роль</th>
         </tr>
-        <tr>
+        <tr th:each="user : ${users}">
             <td th:text="${user.getId()}"></td>
             <td th:text="${user.getName()}"></td>
             <td th:text="${user.getLastname()}"></td>
             <td th:text="${user.getAge()}"></td>
-            <td th:each="role: ${roles}"><p th:text="${role.name}"></p></td>
             <td>
+                <a th:href="@{/{id}(id=${user.getId()})}">Перейти</a>
                 <a th:href="@{/{id}/edit(id=${user.getId()})}">Редактировать</a>
                 <form th:method="DELETE" th:action="@{/{id}(id=${user.getId()})}">
                     <input type="submit" value="Удалить"/>
                 </form>
             </td>
-            <a th:href="@{/logout}">Выйти</a>
         </tr>
     </table>
     <br/>
+    <hr/>
+    <a href="/new">Создать пользователя</a>
+    <a th:href="@{/logout}">Выйти</a>
 </div>
 </body>
 </html>

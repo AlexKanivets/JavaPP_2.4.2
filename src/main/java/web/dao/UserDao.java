@@ -9,5 +9,5 @@ public interface UserDao {
     void createUser(User user);
     void updateUser(int id, User updatedUser);
     void deleteUser(int id);
-    void createUsersTable();
+    User getUserByName(String name);
 }
