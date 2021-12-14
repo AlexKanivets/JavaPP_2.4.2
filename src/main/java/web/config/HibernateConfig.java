@@ -68,9 +68,4 @@ public class HibernateConfig {
 
         return jpaTransactionManager;
     }
-
-    @Bean
-    public PersistenceExceptionTranslationPostProcessor getPostProcessor() {
-        return new PersistenceExceptionTranslationPostProcessor();
-    }
 }

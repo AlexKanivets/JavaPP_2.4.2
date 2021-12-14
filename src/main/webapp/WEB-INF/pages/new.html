@@ -7,7 +7,7 @@
 <body>
 <div align="center">
     <h2>Новый пользователь</h2>
-    <form th:method="POST" th:action="@{/}" th:object="${user}">
+    <form th:method="POST" th:action="@{/admin}" th:object="${user}">
         <label for="name">Введите имя: </label>
         <input type="text" th:field="*{name}" id="name"/>
         <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
