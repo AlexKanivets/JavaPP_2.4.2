@@ -3,15 +3,11 @@ package web.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import web.dao.RoleDao;
 import web.dao.UserDao;
-import web.model.Role;
 import web.model.User;
 
 import javax.transaction.Transactional;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Service
 @Transactional
@@ -38,19 +34,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserById(int id) {
+    public User getUserById(Long id) {
         return userDao.getUserById(id);
     }
 
 
     @Override
-    public void updateUser(int id, User updatedUser) {
+    public void updateUser(Long id, User updatedUser) {
         updatedUser.setPassword(passwordEncoder.encode(updatedUser.getPassword()));
         userDao.updateUser(id,updatedUser);
     }
 
     @Override
-    public void deleteUser(int id) {
+    public void deleteUser(Long id) {
         userDao.deleteUser(id);
     }
 

@@ -1,6 +1,5 @@
 package web.model;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
@@ -13,7 +12,7 @@ public class Role implements GrantedAuthority {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name = "role")
     private String role;
@@ -28,11 +27,11 @@ public class Role implements GrantedAuthority {
     public Role() {
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

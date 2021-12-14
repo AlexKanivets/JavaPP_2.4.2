@@ -1,16 +1,11 @@
 package web.dao;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
-import web.model.Role;
 import web.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Component
 public class UserDaoImpl implements UserDao {
@@ -24,7 +19,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User getUserById(int id) {
+    public User getUserById(Long id) {
         return entityManager.find(User.class, id);
     }
 
@@ -34,7 +29,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void updateUser(int id, User updatedUser) {
+    public void updateUser(Long id, User updatedUser) {
         User user = getUserById(id);
         user.setName(updatedUser.getName());
         user.setLastname(updatedUser.getLastname());
@@ -42,7 +37,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void deleteUser(int id) {
+    public void deleteUser(Long id) {
         entityManager.remove(getUserById(id));
     }
 

@@ -15,9 +15,9 @@ import java.util.Set;
 @Table(name="users")
 public class User implements UserDetails {
     @Id
-    @Column
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name = "name")
     @NotEmpty(message = "Поле не должно быть пустым")
@@ -45,7 +45,7 @@ public class User implements UserDetails {
     public User() {
     }
 
-    public User(int id, String name, String lastname, int age, Set<Role> roles, String password) {
+    public User(Long id, String name, String lastname, int age, Set<Role> roles, String password) {
         this.id = id;
         this.name = name;
         this.lastname = lastname;
@@ -54,11 +54,11 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
