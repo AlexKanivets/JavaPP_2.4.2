@@ -24,8 +24,8 @@
         <input type="text" th:field="*{password}" id="password"/>
         <div style="color: red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">VALUE</div>
         <br/>
-        <input type="checkbox" name="nameRoles" value="USER"/>USER
-        <input type="checkbox" name="nameRoles" value="ADMIN"/>ADMIN
+        <input type="radio" name="nameRoles" value="USER"/>USER
+        <input type="radio" name="nameRoles" value="ADMIN"/>ADMIN
         <br/>
         <input type="submit" value="Создать">
         <form th:action="@{/logout}" method="POST">
