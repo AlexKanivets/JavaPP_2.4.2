@@ -13,22 +13,15 @@
             <th>Имя</th>
             <th>Фамилия</th>
             <th>Возраст</th>
-            <th>Действие</th>
-            <th>Роль</th>
         </tr>
         <tr>
             <td th:text="${user.getId()}"></td>
             <td th:text="${user.getName()}"></td>
             <td th:text="${user.getLastname()}"></td>
             <td th:text="${user.getAge()}"></td>
-            <td th:block th:each="role: ${roles}"><p th:text="${role.role}">VALUE</p></td>
-            <td>
-                <a th:href="@{/admin/{id}/(id=${user.getId()})}">Редактировать</a>
-                <form th:method="DELETE" th:action="@{/admin/{id}(id=${user.getId()})}">
-                    <input type="submit" value="Удалить"/>
-                </form>
-            </td>
-            <a th:href="@{/logout}">Выйти</a>
+            <form th:action="@{/logout}" method="POST">
+                <input type="submit" value="Выйти"/>
+            </form>
         </tr>
     </table>
     <br/>

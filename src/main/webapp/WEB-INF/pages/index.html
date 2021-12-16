@@ -13,6 +13,7 @@
             <th>Имя</th>
             <th>Фамилия</th>
             <th>Возраст</th>
+            <th>Роль</th>
             <th>Действие</th>
         </tr>
         <tr th:each="user : ${users}">
@@ -29,12 +30,14 @@
                     <input type="submit" value="Удалить"/>
                 </form>
             </td>
-            <input type="button" value="Create new user" onclick="window.location.href='/admin/new'">
         </tr>
     </table>
     <br/>
     <hr/>
     <input type="button" value="Создать пользователя" onclick="window.location.href='/admin/new'">
+    <form th:action="@{/logout}" method="POST">
+        <input type="submit" value="Выйти"/>
+    </form>
 </div>
 </body>
 </html>

@@ -10,25 +10,27 @@
     <form th:method="POST" th:action="@{/admin}" th:object="${user}">
         <label for="name">Введите имя: </label>
         <input type="text" th:field="*{name}" id="name"/>
-        <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+        <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">VALUE</div>
         <br/>
         <label for="lastname">Введите фамилию: </label>
         <input type="text" th:field="*{lastname}" id="lastname"/>
-        <div style="color: red" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></div>
+        <div style="color: red" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">VALUE</div>
         <br/>
         <label for="age">Введите возраст: </label>
         <input type="text" th:field="*{age}" id="age"/>
-        <div style="color: red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></div>
+        <div style="color: red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">VALUE</div>
         <br/>
         <label for="age">Введите пароль: </label>
         <input type="text" th:field="*{password}" id="password"/>
-        <div style="color: red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+        <div style="color: red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">VALUE</div>
         <br/>
-        <input type="checkbox" name="nameRoles" value="ROLE_USER"/>USER
-        <input type="checkbox" name="nameRoles" value="ROLE_ADMIN"/>ADMIN
+        <input type="checkbox" name="nameRoles" value="USER"/>USER
+        <input type="checkbox" name="nameRoles" value="ADMIN"/>ADMIN
         <br/>
         <input type="submit" value="Создать">
-        <a th:href="@{/logout}">Выйти</a>
+        <form th:action="@{/logout}" method="POST">
+            <input type="submit" value="Выйти"/>
+        </form>
     </form>
 </div>
 </body>
