@@ -37,7 +37,7 @@ public class AdminController {
     }
 
     @PostMapping
-    public String createUser(@ModelAttribute("user") @Valid User user,
+    public String createUser(@ModelAttribute("user") User user,
                              @RequestParam(value = "nameRoles") String [] nameRoles) {
         userService.createUser(user);
         user.setRoles(roleService.getSetOfRoles(nameRoles));
@@ -52,7 +52,7 @@ public class AdminController {
     }
 
     @PatchMapping("/{id}")
-    public String updateUser(@ModelAttribute("user") @Valid User user,
+    public String updateUser(@ModelAttribute("user") User user,
                              @RequestParam(value = "nameRoles") String [] nameRoles) {
         user.setRoles(roleService.getSetOfRoles(nameRoles));
         userService.updateUser(user);

@@ -35,9 +35,7 @@
     <br/>
     <hr/>
     <input type="button" value="Создать пользователя" onclick="window.location.href='/admin/new'">
-    <form th:action="@{/logout}" method="POST">
-        <input type="submit" value="Выйти"/>
-    </form>
+    <a th:href="@{/logout}">Выйти</a>
 </div>
 </body>
 </html>

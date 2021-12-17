@@ -19,9 +19,7 @@
             <td th:text="${user.getName()}"></td>
             <td th:text="${user.getLastname()}"></td>
             <td th:text="${user.getAge()}"></td>
-            <form th:action="@{/logout}" method="POST">
-                <input type="submit" value="Выйти"/>
-            </form>
+            <a th:href="@{/logout}">Выйти</a>
         </tr>
     </table>
     <br/>

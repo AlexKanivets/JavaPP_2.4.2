@@ -3,9 +3,6 @@ package web.model;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.HashSet;
@@ -17,24 +14,18 @@ public class User implements UserDetails {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @Column(name = "name")
-    @NotEmpty(message = "Поле не должно быть пустым")
-    @Size(min = 2, max = 30, message = "Допустимая длина имени от 2 до 30")
     private String name;
 
     @Column(name = "lastname")
-    @NotEmpty(message = "Поле не должно быть пустым")
-    @Size(min = 2, max = 50, message = "Допустимая длина фамилии от 2 до 50")
     private String lastname;
 
     @Column(name = "age")
-    @Min(value = 0, message = "Возраст не может быть меньше 0")
     private int age;
 
     @Column(name = "password")
-    @Size(min = 8, message = "Пароль не должен быть меньше 8 символов")
     private String password;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -45,7 +36,7 @@ public class User implements UserDetails {
     public User() {
     }
 
-    public User(Long id, String name, String lastname, int age, Set<Role> roles, String password) {
+    public User(long id, String name, String lastname, int age, Set<Role> roles, String password) {
         this.id = id;
         this.name = name;
         this.lastname = lastname;
@@ -58,7 +49,7 @@ public class User implements UserDetails {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
