@@ -31,16 +31,16 @@ public class AdminController {
 
     @GetMapping("/new")
     public String newUser(Model model) {
-        model.addAttribute("user", new User());
         model.addAttribute("roles", roleService.getAllRoles());
+        model.addAttribute("user", new User());
         return "new";
     }
 
     @PostMapping
     public String createUser(@ModelAttribute("user") User user,
                              @RequestParam(value = "nameRoles") String [] nameRoles) {
-        userService.createUser(user);
         user.setRoles(roleService.getSetOfRoles(nameRoles));
+        userService.createUser(user);
         return "redirect:/admin";
     }
 
