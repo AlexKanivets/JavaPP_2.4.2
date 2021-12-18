@@ -9,16 +9,16 @@
     <h2>Редактирование пользователя</h2>
     <form th:method="PATCH" th:action="@{/admin/{id}(id=${user.getId()})}" th:object="${user}">
         <label for="name">Введите имя: </label>
-        <input type="text" th:field="*{name}" id="name"/>
+        <input name="name" type="text" th:field="*{name}" id="name"/>
         <br/>
         <label for="lastname">Введите фамилию: </label>
-        <input type="text" th:field="*{lastname}" id="lastname"/>
+        <input name="lastname" type="text" th:field="*{lastname}" id="lastname"/>
         <br/>
         <label for="age">Введите возраст: </label>
-        <input type="text" th:field="*{age}" id="age"/>
+        <input name="age" type="text" th:field="*{age}" id="age"/>
         <br/>
         <label for="password">Введите пароль: </label>
-        <input type="password" th:field="*{password}" id="password"/>
+        <input name="password" type="password" id="password"/>
         <br/>
         <input type="radio" name="nameRoles" value="USER" checked/>USER
         <input type="radio" name="nameRoles" value="ADMIN"/>ADMIN
