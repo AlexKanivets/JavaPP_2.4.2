@@ -21,7 +21,11 @@
             <td th:text="${user.getName()}"></td>
             <td th:text="${user.getLastname()}"></td>
             <td th:text="${user.getAge()}"></td>
-            <td th:block th:each="role : ${user.getRoles()}"><p th:text="${role.getRole()}"></p></td>
+            <td>
+                <div th:each="role : ${user.getRoles()}">
+                    <p th:text="${role.getRole()}"></p>
+                </div>
+            </td>
             <td th:align="center">
                 <form style="display:inline;" th:method="GET" th:action="@{/admin/{id}(id=${user.getId()})}">
                     <input type="submit" value="Редактировать"/>

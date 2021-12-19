@@ -20,8 +20,8 @@
         <label for="age">Введите пароль: </label>
         <input type="text" th:field="*{password}" id="password"/>
         <br/>
-        <input type="radio" name="nameRoles" value="USER" checked/>USER
-        <input type="radio" name="nameRoles" value="ADMIN"/>ADMIN
+        <input type="checkbox" name="nameRoles" value="USER" checked/>USER
+        <input type="checkbox" name="nameRoles" value="ADMIN"/>ADMIN
         <br/>
         <input type="submit" value="Создать">
         <a th:href="@{/logout}">Выйти</a>
