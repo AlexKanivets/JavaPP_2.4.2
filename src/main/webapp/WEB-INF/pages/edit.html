@@ -20,8 +20,9 @@
         <label for="password">Введите пароль: </label>
         <input name="password" type="password" id="password"/>
         <br/>
-        <input type="checkbox" name="nameRoles" value="USER" checked/>USER
-        <input type="checkbox" name="nameRoles" value="ADMIN"/>ADMIN
+        <div th:each="role : ${roles}">
+                <input type="checkbox" name="nameRoles" th:value="${role.role}" th:text="${role.role}" th:checked="${role.role} == USER"/>
+        </div>
         <br/>
         <input type="submit" value="Сохранить">
         <a th:href="@{/logout}">Выйти</a>
