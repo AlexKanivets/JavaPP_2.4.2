@@ -15,13 +15,16 @@
         <input type="text" th:field="*{lastname}" id="lastname"/>
         <br/>
         <label for="age">Введите возраст: </label>
-        <input type="text" th:field="*{age}" id="age"/>
+        <input type="number" th:field="*{age}" id="age"/>
         <br/>
-        <label for="age">Введите пароль: </label>
+        <label for="password">Введите пароль: </label>
         <input type="text" th:field="*{password}" id="password"/>
         <br/>
         <div th:each="role : ${roles}">
-            <input type="checkbox" name="nameRoles" th:value="${role.role}" th:text="${role.role}" th:checked="${role.role} == USER"/>
+            <input type="checkbox" name="nameRoles"
+                   th:value="${role.role}"
+                   th:text="${role.role}"
+                   th:checked="${role.role} == USER"/>
         </div>
         <br/>
         <input type="submit" value="Создать">
