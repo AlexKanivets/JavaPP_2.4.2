@@ -25,6 +25,9 @@ public class User implements UserDetails {
     @Column(name = "age")
     private int age;
 
+    @Column(name = "email")
+    private String email;
+
     @Column(name = "password")
     private String password;
 
@@ -36,13 +39,14 @@ public class User implements UserDetails {
     public User() {
     }
 
-    public User(long id, String name, String lastname, int age, Set<Role> roles, String password) {
+    public User(long id, String name, String lastname, int age, Set<Role> roles, String email, String password) {
         this.id = id;
         this.name = name;
         this.lastname = lastname;
         this.age = age;
         this.roles = roles;
         this.password = password;
+        this.email = email;
     }
 
     public Long getId() {
@@ -75,6 +79,14 @@ public class User implements UserDetails {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
@@ -125,7 +137,6 @@ public class User implements UserDetails {
         return true;
     }
 
-
     @Override
     public String toString() {
         return "User{" +
@@ -133,6 +144,7 @@ public class User implements UserDetails {
                 ", name='" + name + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", age=" + age +
+                ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", roles=" + roles +
                 '}';
